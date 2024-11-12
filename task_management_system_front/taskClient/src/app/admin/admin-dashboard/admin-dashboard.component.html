@@ -1,0 +1,10 @@
+<div class="admin-dashboard">
+    <div class="dashboard-box">
+        <h2>Welcome, {{ adminName }}!</h2>
+        <div class="button-container">
+            <button *ngFor="let route of adminRoutes" (click)="navigateTo(route.path)">
+                {{ route.label }}
+            </button>
+        </div>
+    </div>
+</div>

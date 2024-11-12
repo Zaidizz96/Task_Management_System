@@ -1,0 +1,134 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  
+  .signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin: 75px auto;
+    border: 1px solid #ddd;
+  }
+  
+  .signin-card {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #6a11cb;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #6a11cb;
+    padding-bottom: 10px;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .data-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus, select:focus {
+    border-color: #6a11cb;
+    outline: none;
+    box-shadow: 0 0 6px rgba(106, 17, 203, 0.2);
+  }
+  
+  .validation-container {
+    font-size: 0.9em;
+    color: #d9534f;
+    padding: 5px;
+    background: #fce4e4;
+    border-radius: 4px;
+    margin-top: 5px;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .validation-container p {
+    margin: 3px 0;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a11cb;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+  }
+  
+  .submit-button:hover {
+    background-color: #5a0fb2;
+  }
+  
+  .error {
+    color: #d9534f;
+    font-size: 0.85em;
+  }
+  

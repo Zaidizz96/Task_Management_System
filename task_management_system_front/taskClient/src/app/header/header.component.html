@@ -1,0 +1,24 @@
+<header>
+  <div class="logo">
+    <h1>Task Management</h1>
+  </div>
+
+  <nav class="nav-links">
+    <a *ngIf="isAuthenticated" (click)="navigateToHome()">Home</a>
+    <a *ngIf="(isAuthenticated && isAdmin)" (click)="navigateToAdminDashBoard()">Admin Dashboard</a>
+    <a *ngIf="(isAuthenticated && !isAdmin)" (click)="navigateToUserDashboard()">User Dashboard</a>
+
+  </nav>
+
+  <div class="auth-buttons">
+    <button *ngIf="!isAuthenticated" (click) ="loginNavigation()">Login</button>
+    <button *ngIf="(isAuthenticated && isAdmin)" (click)= "signupNavigation()">Add User</button>
+    <button *ngIf="isAuthenticated" (click) = "clearToken()">Logout</button>
+    <button *ngIf="isAuthenticated" (click) = "navigateToProfilePage()">Profile</button>
+    <button *ngIf="(isAuthenticated && isAdmin)" (click) = "navigateToUsersPage()">Users</button>
+
+    <div class="dropdown" [class.open]="dropDownOpen">
+      <button *ngIf="(isAuthenticated && isAdmin)" (click)="navigateToAddTask()">Add Task</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,67 @@
+<div class="user-tasks-container">
+  <h2>User Tasks</h2>
+
+  <table class="tasks-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Assigned User</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of userTasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.userId || 'Unassigned' }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.dueDate | date }}</td>
+        <td>
+          <button (click)="viewTaskDetails(task.id , task.userId)">View Details</button>
+          <button *ngIf="isAdmin" (click)="deleteTask(task.id)">Delete</button>
+          <button *ngIf="isAdmin" (click)="openEditModal(task)">Edit</button> 
+          <button *ngIf="!isAdmin" (click) = "openEditModal(task)" >Edit Status</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isEditModalOpen" class="modal">
+    <div class="modal-content">
+      <!-- Close Button -->
+      <button class="close-button" (click)="closeEditModal()">&times;</button>
+  
+      <!-- Modal Header -->
+      <h3>Edit Task</h3>
+  
+      <!-- Edit Task Form -->
+      <form [formGroup]="editTaskForm" (ngSubmit)="submitEdit()">
+        <div *ngIf="isAdmin" class="form-group">
+          <label for="title">Title</label>
+          <input id="title" formControlName="title" type="text" placeholder="Enter task title" required />
+        </div>
+  
+        <div *ngIf="isAdmin" class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" rows="4" placeholder="Enter task description"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" formControlName="status" required>
+            <option *ngFor="let status of statusValues" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+  
+        <div *ngIf="isAdmin" class="form-group">
+          <label for="dueDate">Due Date</label>
+          <input id="dueDate" formControlName="dueDate" type="date" required />
+        </div>
+  
+        <button type="submit" class="submit-button">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</div>

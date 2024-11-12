@@ -1,0 +1,32 @@
+<div class="signin-container">
+    <div class="header">
+        <h5>User Login</h5>
+    </div>
+
+    <div class="signin-card">
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+            <div class="data-container" formGroupName="userData">
+                <div class="form-group email">
+                    <label for="email">Email</label>
+                    <div class="input-container">
+                        <input type="text" id="email" formControlName="username" placeholder="Enter your email" />
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="form-group password">
+                    <label for="password">Password</label>
+                    <div class="input-container">
+                        <input type="password" id="password" formControlName="password" placeholder="Enter your password" />
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                </div>
+
+                <div class="validation-container badCredentials" *ngIf="badCredentialMessage">
+                    <p>*Incorrect email or password</p>
+                </div>
+            </div>
+            <button type="submit" [ngStyle]="{'background-color':loginForm.invalid?'#89c2d9':''}" [disabled]="loginForm.invalid">Login</button>
+        </form>
+    </div>
+</div>

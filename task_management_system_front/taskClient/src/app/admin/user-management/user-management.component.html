@@ -1,0 +1,75 @@
+<div class="user-management-container">
+    <h2>User Management</h2>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td [ngClass]="{ 'active': user.active, 'inactive': !user.active }">
+                    {{ user.active ? 'Active' : 'Inactive' }}
+                </td>
+                <td>
+                    <button (click)="deleteUser(user.id)" class="action-button delete-button">Delete</button>
+                    <button (click)="navigateToAssignTask(user.id)" class="action-button assign-button">Assign
+                        Task</button>
+                    <button (click)="openEditUserModal(user)" class="action-button edit-button">Edit User
+                        Details</button>
+                    <button (click)="viewUserTasks(user.id)" class="action-button assign-button">View Tasks</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="isEditUserModalOpen" class="modal">
+        <div class="modal-content">
+          <!-- Close Button -->
+          <button class="close-button" (click)="closeEditUserModal()">&times;</button>
+      
+          <!-- Modal Header -->
+          <h3>Edit User</h3>
+      
+          <!-- Edit User Form -->
+          <form [formGroup]="editUserForm" (ngSubmit)="submitEditUser()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" formControlName="name" type="text" placeholder="Enter user name" required />
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" formControlName="email" type="email" placeholder="Enter user email" required />
+            </div>
+      
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" formControlName="role" required>
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" formControlName="active" required>
+                <option [value]="true">Active</option>
+                <option [value]="false">Inactive</option>
+              </select>
+            </div>
+      
+            <button type="submit" class="submit-button">Save Changes</button>
+          </form>
+        </div>
+      </div>
+      
+</div>

@@ -1,0 +1,99 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="user-dashboard-container">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <p class="welcome-text">Welcome, {{ userName }}!</p>
+    <p class="user-info">Role: USER</p>
+    <p class="user-info">{{ currentDate | date: 'fullDate' }}</p>
+    
+    <div class="button-group">
+      <button class="profile-settings-button" (click)="navigateToProfile()">Profile Settings</button>
+      <button class="tasks-button" (click)="navigateToMyTasks()">My Tasks</button>
+    </div>
+  </div>
+  <!-- Task Summary Section -->
+  <div class="task-summary">
+      <h3 class="task-summary-title">Task Summary</h3>
+      <ul class="task-summary-list">
+          <li><strong>Total Tasks:</strong> {{ taskSummery.total }}</li>
+          <li><strong>In Progress:</strong> {{ taskSummery.inProgress}}</li>
+          <li><strong>Completed:</strong> {{ taskSummery.inProgress }}</li>
+      </ul>
+  </div>
+
+  <!-- Recent Activity Section -->
+  <!-- <div class="recent-activity">
+      <h3>Recent Activity</h3>
+      <table class="tasks-table">
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Due Date</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let task of recentTasks">
+                  <td>{{ task.title }}</td>
+                  <td [class.overdue]="task.status === 'Overdue'">{{ task.status }}</td>
+                  <td>{{ task.dueDate | date: 'mediumDate' }}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="user-dashboard-container">
+    <div class="welcome-section">
+      <h2>Welcome, {{ userName }}!</h2>
+      <p>Role: User</p>
+      <p>{{ currentDate | date: 'fullDate' }}</p>
+    </div>
+  
+    <div class="quick-actions">
+      <button (click)="navigateToProfile()">Profile Settings</button>
+    </div>
+  
+    <div class="task-summary">
+      <h3>Task Summary</h3>
+      <ul>
+        <li>Total Tasks: {{ taskSummery.total }}</li>
+        <li>In Progress: {{ taskSummery.inProgress }}</li>
+        <li>Completed: {{ taskSummery.completed }}</li>
+      </ul>
+    </div>
+  
+    <div class="recent-activity">
+      <h3>Recent Activity</h3>
+      <ul>
+        <li *ngFor="let activity of recentActivities">
+          {{ activity }}
+        </li>
+      </ul>
+    </div>
+  </div>
+   -->

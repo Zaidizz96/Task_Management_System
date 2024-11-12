@@ -1,0 +1,63 @@
+<div class="signin-container">
+    <div class="signin-card">
+      <h2>Register New User</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="submitSignup()">
+        <div class="data-container" formGroupName="userData">
+          <div class="column">
+              <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" id="username" formControlName="name" placeholder="Enter username" />
+                <div class="validation-container" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                  <p *ngIf="name?.errors?.['minlength'] || name?.errors?.['maxlength']">
+                    *Username must be 3-15 characters
+                  </p>
+                  <p *ngIf="name?.errors?.['required']">*Username is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" id="email" formControlName="email" placeholder="Enter email" />
+              <div class="validation-container" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                <p *ngIf="email?.errors?.['pattern']">Invalid Email</p>
+                <p *ngIf="email?.errors?.['required']">*Email is required</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="column">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" formControlName="password" placeholder="Enter password" />
+              <div class="validation-container" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                <p *ngIf="password?.errors?.['pattern']">
+                  *Invalid Password: <br />- One special character (!#$%&?)<br />- 8+ characters with a number<br />- One
+                  uppercase letter
+                </p>
+                <p *ngIf="password?.errors?.['required']">*Password is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="passwordConfirm">Confirm Password</label>
+              <input type="password" id="passwordConfirm" formControlName="passwordConfirm" placeholder="Confirm password" />
+              <div class="validation-container" *ngIf="passwordConfirm?.invalid && (passwordConfirm?.dirty || passwordConfirm?.touched)">
+                <p *ngIf="passwordConfirm?.errors?.['passwordMatchesError']">*Passwords do not match</p>
+                <p *ngIf="passwordConfirm?.errors?.['required']">*Password confirmation is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" formControlName="role" class="form-control">
+                  <option value="" disabled>Select Role</option>
+                  <option *ngFor="let role of roles" [ngValue]="role">{{ role }}</option>
+              </select>
+              <div *ngIf="signupForm.get('userData.role')?.invalid && signupForm.get('userData.role')?.touched" class="error">
+                  <p>*Role is required</p>
+              </div>
+          </div>
+          </div>
+        </div>
+        <button type="submit" [disabled]="signupForm.invalid" class="submit-button">Signup</button>
+      </form>
+    </div>
+  </div>
+  

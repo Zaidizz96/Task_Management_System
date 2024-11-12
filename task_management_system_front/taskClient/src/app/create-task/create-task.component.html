@@ -1,0 +1,52 @@
+<div class="task-create-container">
+    <h2>Create Task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" type="text" class="form-control" placeholder="Enter task title" />
+        <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error">
+          The title should not be blank.
+        </div>
+      </div>
+  
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+      </div>
+  
+      <!-- Status -->
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+          <option value="">Select Status</option>
+          <option *ngFor="let status of statusValues" [value]="status">{{ status }}</option>
+        </select>
+        <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched" class="error">
+          The status should not be null.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="userId">Assign User</label>
+        <select id="userId" formControlName="userId" class="form-control">
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+      </div>
+  
+      <!-- Due Date -->
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input id="dueDate" formControlName="dueDate" type="date" class="form-control" />
+        <div *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="error">
+          The due date is required.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn-submit" [disabled]="taskForm.invalid">Create Task</button>
+    </form>
+  </div>
+  

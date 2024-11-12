@@ -1,0 +1,26 @@
+<div class="comments-section">
+  <h3 class="comments-header">Comments</h3>
+
+  <!-- Display each comment in a styled container -->
+  <div *ngFor="let comment of comments" class="comment">
+    <p class="comment-author">{{ 'Name' }}</p>
+    <p class="comment-timestamp">{{ comment.timestamp | date: 'short' }}</p>
+    <p>{{ comment.commentText }}</p>
+
+    <button (click)="deleteComment(comment.id)" class="delete-button">Delete</button>
+
+    <hr />
+  </div>
+
+  <!-- Add Comment Form -->
+  <div class="add-comment-section">
+    <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+      <textarea
+        formControlName="content"
+        placeholder="Add a comment"
+        rows="3"
+      ></textarea>
+      <button type="submit" [disabled]="!commentForm.valid">Submit</button>
+    </form>
+  </div>
+</div>
