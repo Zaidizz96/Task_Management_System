@@ -21,7 +21,6 @@
     <div class="form-group">
         <label for="status">Status</label>
         <select id="status" formControlName="status" class="form-control">
-          <option value="">Select Status</option>
           <option *ngFor="let status of statusValues" [value]="status">{{ status }}</option>
         </select>
         <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched" class="error">

@@ -31,8 +31,6 @@ export class UserManagementComponent implements OnInit{
 
   roles = Object.values(Role);
   
-
-
   ngOnInit(): void {
     this.fetchUsers();    
     this.buildEditUserForm();

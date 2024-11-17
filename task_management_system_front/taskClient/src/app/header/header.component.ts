@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Token } from '@angular/compiler';
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, inject, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
@@ -29,17 +29,27 @@ export class HeaderComponent implements OnInit {
   authenticationService = inject(AuthenticationService);
   cdr = inject(ChangeDetectorRef);
 
+  
   ngOnInit(): void {
-    this.isAuthenticated = this.checkAuthentication();
-    this.isAdmin = this.checkAdminStatus();
+    this.checkAuthentication();
+    this.checkAdminStatus();
   }
 
-  checkAuthentication() : boolean{
-   return this.authenticationService.isAuthenticated();
+
+  checkAuthentication() {
+    this.authenticationService.isAuthenticatedVariable$.subscribe(
+      (isAuthenticated) => {
+        this.isAuthenticated = isAuthenticated;
+      }
+    )
   }
 
-  checkAdminStatus() : boolean {
-    return this.authenticationService.isAdmin();
+  checkAdminStatus() {
+     this.authenticationService.isAdminVariable$.subscribe(
+      (isAdmin) => {
+        this.isAdmin = isAdmin;
+      }
+     )
   }
 
   navigateToHome() {
@@ -83,7 +93,6 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.isAuthenticated = false;
     this.isAdmin = false;
-    this.cdr.detectChanges(); 
     this.route.navigateByUrl('/login');
   }
 

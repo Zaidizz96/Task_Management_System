@@ -46,6 +46,7 @@ export class UserDashboardComponent implements OnInit {
   loadTaskSummery() {
     this.userService.getTaskByUserId(this.userId).subscribe({
       next : (tasks) => {
+        
         this.taskSummery.total = tasks.length;
         this.taskSummery.inProgress = tasks.filter(task => (task.status ?? ' ').toString() === 'IN_PROGRESS').length;
         this.taskSummery.completed = tasks.filter(task => (task.status ?? ' ').toString() === 'COMPLETED').length

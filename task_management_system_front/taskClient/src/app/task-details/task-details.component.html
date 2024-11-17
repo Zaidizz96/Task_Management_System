@@ -8,7 +8,6 @@
       <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
     </div>
   
-    <!-- Include the Comments Component -->
     <app-comments [taskId]="taskId" [userId]="userId" [comments]="comments" (commentDeleted)="removeDeletedComments($event)"></app-comments>
   </div>
   

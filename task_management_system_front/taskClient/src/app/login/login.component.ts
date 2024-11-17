@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(credentials).subscribe({
       next : (response) => {
         this.authService.setToken(response.token);
+        this.authService.updateAuthStatus(response.token);
         console.log(response);
         if(this.authService.isAdmin()){
           this.router.navigateByUrl('/admin-dashboard');

@@ -66,7 +66,7 @@ export class ProfileDetailsComponent implements OnInit{
   // }
 
   submitProfile() : void {
-    if (this.profileForm.valid) {
+    if (this.profileForm.valid && this.currentUserId) {
         const updatedUser = { ...this.profileForm.value, id: this.currentUserId };
         
         this.userService.updateUser(updatedUser).subscribe({

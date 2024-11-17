@@ -32,7 +32,7 @@ export class CreateTaskComponent implements OnInit {
   ngOnInit(): void {
     // Check if a user ID was provided in the route parameters
     this.route.paramMap.subscribe(params => {
-      this.assignedUserId = params.get('userId');  // Check if userId exists in the params
+      this.assignedUserId = params.get('userId');  
       this.fetchUsers();
       this.buildTaskForm();
     });
@@ -50,12 +50,11 @@ export class CreateTaskComponent implements OnInit {
       description: [''],
       status: [null, Validators.required],
       dueDate: ['', Validators.required],
-      userId: [this.assignedUserId || '', Validators.required],  // Default to assignedUserId if available
+      userId: [this.assignedUserId || '', Validators.required],  
     });
 
-    // If a specific user is assigned, make the userId field read-only
     if (this.assignedUserId) {
-      this.taskForm.get('userId')?.disable();  // Disable the user selection when a specific user is assigned
+      this.taskForm.get('userId')?.disable();  
     }
   }
 
@@ -64,7 +63,7 @@ export class CreateTaskComponent implements OnInit {
     const description = this.taskForm.get('description')?.value;
     const status = this.taskForm.get('status')?.value;
     const dueDate = this.taskForm.get('dueDate')?.value.toString();
-    const userId = this.taskForm.get('userId')?.value || this.assignedUserId;  // Use assignedUserId if available
+    const userId = this.taskForm.get('userId')?.value; 
 
     const taskObject: TaskDto = {
       title: title,
