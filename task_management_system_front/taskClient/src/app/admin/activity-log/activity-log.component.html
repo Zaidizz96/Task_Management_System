@@ -1,0 +1,19 @@
+<div class="activity-log-container">
+  <h2>Activity Log</h2>
+  <table class="activity-log-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Timestamp</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logActivities; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ log.timeStamp | date: 'medium' }}</td>
+        <td>{{ log.action }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

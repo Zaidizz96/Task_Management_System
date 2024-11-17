@@ -14,6 +14,7 @@ export class AdminDashboardComponent {
   adminRoutes = [
       { path: '/users', label: 'Manage Users' },
       { path: '/admin-statistics', label: 'View Reports' },
+      { path: '/activity-logs' , label: 'Activity Logs' }
       
   ];
 

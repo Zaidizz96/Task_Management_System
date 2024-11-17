@@ -13,6 +13,7 @@ import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.com
 import { authGuard } from './admin/admin.guard';
 import { Role } from '../todo-api/models/role_enum';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
+import { ActivityLogComponent } from './admin/activity-log/activity-log.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +45,7 @@ export const routes: Routes = [
   {path : 'profile' , component : ProfileDetailsComponent},
   {path : 'user-dashboard', component : UserDashboardComponent , canActivate : [authGuard], data : {role : 'USER'}},
   { path: 'admin-statistics', component: AdminStatisticsComponent , canActivate : [authGuard], data :{role : 'ADMIN'}},
+  {path: 'activity-logs' , component: ActivityLogComponent , canActivate : [authGuard] , data : {role : 'ADMIN'}}
 
 
 

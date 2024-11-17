@@ -1,5 +1,7 @@
 package com.izziddine.taskManagmentSystem.auth;
 
+import com.izziddine.taskManagmentSystem.annotations.LogAddUser;
+import com.izziddine.taskManagmentSystem.annotations.LogLogin;
 import com.izziddine.taskManagmentSystem.config.JwtService;
 import com.izziddine.taskManagmentSystem.entities.User;
 import com.izziddine.taskManagmentSystem.enums.Role;
@@ -32,6 +34,7 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
+    @LogAddUser
     public AuthenticationResponse register(RegisterRequest registerRequest) {
 
         if (userRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
@@ -58,6 +61,7 @@ public class AuthenticationService {
 
     }
 
+    @LogLogin
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
 
         try {

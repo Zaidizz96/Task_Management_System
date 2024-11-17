@@ -1,5 +1,7 @@
 package com.izziddine.taskManagmentSystem.service.service_imp;
 
+import com.izziddine.taskManagmentSystem.annotations.LogTaskCreation;
+import com.izziddine.taskManagmentSystem.annotations.LogTaskUpdates;
 import com.izziddine.taskManagmentSystem.dto.TaskDto;
 import com.izziddine.taskManagmentSystem.entities.Task;
 import com.izziddine.taskManagmentSystem.enums.Status;
@@ -24,6 +26,7 @@ public class TaskServiceImpl implements TaskService {
         this.taskMapper = taskMapper;
     }
 
+    @LogTaskCreation
     @Override
     public TaskDto save(TaskDto taskDto) {
         Task task = taskMapper.toEntity(taskDto);
@@ -54,6 +57,7 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.toDto(taskRepository.save(task));
     }
 
+    @LogTaskUpdates
     @Override
     public TaskDto updateTask(TaskDto taskDto) {
         Task task = taskRepository.findById(taskDto.getId()).orElseThrow(() -> new ResourseNotFoundException("task not found"));

@@ -1,0 +1,44 @@
+.activity-log-container {
+  margin: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #6a11cb;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.activity-log-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-log-table th,
+.activity-log-table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.activity-log-table th {
+  background: #6a11cb;
+  color: white;
+  text-transform: uppercase;
+}
+
+.activity-log-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.activity-log-table tr:hover {
+  background: #f1f1f1;
+}
+
+.activity-log-table td {
+  font-size: 14px;
+  color: #333;
+}
